@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find a Roommate</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#222}
+header{background:#5b5ce2;color:white;padding:22px;text-align:center}
+header h1{margin:0;font-size:30px}
+header p{margin:8px 0 0}
+.search{padding:20px;max-width:600px;margin:auto}
+.search input{width:100%;padding:15px;border:1px solid #ddd;border-radius:12px;font-size:16px}
+.container{padding:0 20px 100px;max-width:600px;margin:auto}
+.card{background:white;border-radius:18px;margin-bottom:20px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.08)}
+.profile{padding:22px}
+.avatar{width:75px;height:75px;border-radius:50%;background:#e5e7ff;display:flex;align-items:center;justify-content:center;font-size:36px}
+.name{font-size:23px;font-weight:bold;margin-top:12px}
+.location{color:#666;margin-top:5px}
+.match{color:#28a745;font-weight:bold;margin-top:10px}
+.tags{margin-top:14px}
+.tag{display:inline-block;background:#eef0ff;color:#4d4fc7;padding:7px 10px;margin:3px;border-radius:20px;font-size:13px}
+.details{margin-top:15px;line-height:1.6}
+button{width:100%;padding:14px;border:0;border-radius:10px;background:#5b5ce2;color:white;font-size:16px;font-weight:bold;margin-top:15px}
+nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:14px 5px;border-top:1px solid #ddd}
+nav div{text-align:center;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1>🏠 Find a Roommate</h1>
+<p>Find someone you can actually live with.</p>
+</header>
+
+<div class="search">
+<input type="text" placeholder="🔎 Search by city or ZIP code">
+</div>
+
+<div class="container">
+<div class="card">
+<div class="profile">
+<div class="avatar">👨</div>
+<div class="name">Jake, 28</div>
+<div class="location">📍 Minneapolis, MN</div>
+<div class="match">✓ 94% Match</div>
+<div class="tags">
+<span class="tag">Gaming</span><span class="tag">Movies</span>
+<span class="tag">Dogs</span><span class="tag">Non-Smoker</span>
+</div>
+<div class="details">
+💰 Budget: $700–$950/month<br>
+🏡 Looking to move: October<br>
+🌙 Night owl
+</div>
+<button onclick="alert('Profile opened!')">View Profile</button>
+</div>
+</div>
+
+<div class="card">
+<div class="profile">
+<div class="avatar">👩</div>
+<div class="name">Sarah, 31</div>
+<div class="location">📍 Bloomington, MN</div>
+<div class="match">✓ 89% Match</div>
+<div class="tags">
+<span class="tag">Cooking</span><span class="tag">Music</span>
+<span class="tag">Fitness</span><span class="tag">Clean</span>
+</div>
+<div class="details">
+💰 Budget: $800–$1,100/month<br>
+🏡 Looking to move: November<br>
+☀️ Early riser
+</div>
+<button onclick="alert('Profile opened!')">View Profile</button>
+</div>
+</div>
+</div>
+
+<nav>
+<div>🏠<br>Home</div>
+<div>🔍<br>Discover</div>
+<div>💬<br>Messages</div>
+<div>👤<br>Profile</div>
+</nav>
+</body>
+</html>
