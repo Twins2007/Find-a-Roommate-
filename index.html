@@ -1,87 +1,851 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Find a Roommate</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#222}
-header{background:#5b5ce2;color:white;padding:22px;text-align:center}
-header h1{margin:0;font-size:30px}
-header p{margin:8px 0 0}
-.search{padding:20px;max-width:600px;margin:auto}
-.search input{width:100%;padding:15px;border:1px solid #ddd;border-radius:12px;font-size:16px}
-.container{padding:0 20px 100px;max-width:600px;margin:auto}
-.card{background:white;border-radius:18px;margin-bottom:20px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.08)}
-.profile{padding:22px}
-.avatar{width:75px;height:75px;border-radius:50%;background:#e5e7ff;display:flex;align-items:center;justify-content:center;font-size:36px}
-.name{font-size:23px;font-weight:bold;margin-top:12px}
-.location{color:#666;margin-top:5px}
-.match{color:#28a745;font-weight:bold;margin-top:10px}
-.tags{margin-top:14px}
-.tag{display:inline-block;background:#eef0ff;color:#4d4fc7;padding:7px 10px;margin:3px;border-radius:20px;font-size:13px}
-.details{margin-top:15px;line-height:1.6}
-button{width:100%;padding:14px;border:0;border-radius:10px;background:#5b5ce2;color:white;font-size:16px;font-weight:bold;margin-top:15px}
-nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:14px 5px;border-top:1px solid #ddd}
-nav div{text-align:center;font-size:13px}
+
+*{
+
+  box-sizing:border-box;
+
+}
+
+body{
+
+  margin:0;
+
+  font-family:Arial,sans-serif;
+
+  background:#f4f5fb;
+
+  color:#222;
+
+  padding-bottom:95px;
+
+}
+
+header{
+
+  background:linear-gradient(135deg,#5b5ce2,#7567ee);
+
+  color:white;
+
+  padding:32px 20px 28px;
+
+}
+
+header h1{
+
+  margin:0;
+
+  font-size:32px;
+
+}
+
+header p{
+
+  margin:8px 0 0;
+
+  font-size:17px;
+
+}
+
+.search{
+
+  padding:20px;
+
+  max-width:650px;
+
+  margin:auto;
+
+}
+
+.search input{
+
+  width:100%;
+
+  padding:17px;
+
+  border:2px solid #ddd;
+
+  border-radius:16px;
+
+  font-size:17px;
+
+}
+
+.filters{
+
+  display:flex;
+
+  gap:10px;
+
+  overflow-x:auto;
+
+  padding:0 20px 18px;
+
+  max-width:650px;
+
+  margin:auto;
+
+}
+
+.filter{
+
+  border:none;
+
+  background:white;
+
+  padding:10px 16px;
+
+  border-radius:25px;
+
+  white-space:nowrap;
+
+  font-size:14px;
+
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.container{
+
+  padding:0 20px;
+
+  max-width:650px;
+
+  margin:auto;
+
+}
+
+.card{
+
+  background:white;
+
+  border-radius:22px;
+
+  padding:22px;
+
+  margin-bottom:20px;
+
+  box-shadow:0 4px 16px rgba(0,0,0,.08);
+
+}
+
+.top{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:16px;
+
+}
+
+.avatar{
+
+  width:82px;
+
+  height:82px;
+
+  border-radius:50%;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-size:45px;
+
+  background:#eeeeff;
+
+}
+
+.name{
+
+  font-size:25px;
+
+  font-weight:bold;
+
+}
+
+.location{
+
+  color:#666;
+
+  margin-top:5px;
+
+}
+
+.match{
+
+  color:#34a853;
+
+  font-weight:bold;
+
+  font-size:20px;
+
+  margin:17px 0;
+
+}
+
+.tags{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:8px;
+
+  margin-bottom:18px;
+
+}
+
+.tag{
+
+  background:#eeeeff;
+
+  color:#4d50c9;
+
+  padding:8px 13px;
+
+  border-radius:18px;
+
+  font-size:14px;
+
+}
+
+.details{
+
+  line-height:1.7;
+
+  font-size:16px;
+
+}
+
+.buttons{
+
+  display:flex;
+
+  gap:10px;
+
+  margin-top:18px;
+
+}
+
+button{
+
+  cursor:pointer;
+
+}
+
+.profile-btn{
+
+  flex:1;
+
+  border:none;
+
+  padding:14px;
+
+  border-radius:14px;
+
+  background:#5b5ce2;
+
+  color:white;
+
+  font-weight:bold;
+
+  font-size:16px;
+
+}
+
+.message-btn{
+
+  flex:1;
+
+  border:2px solid #5b5ce2;
+
+  padding:14px;
+
+  border-radius:14px;
+
+  background:white;
+
+  color:#5b5ce2;
+
+  font-weight:bold;
+
+  font-size:16px;
+
+}
+
+.bottom-nav{
+
+  position:fixed;
+
+  bottom:0;
+
+  left:0;
+
+  right:0;
+
+  height:82px;
+
+  background:white;
+
+  border-top:1px solid #ddd;
+
+  display:flex;
+
+  justify-content:space-around;
+
+  align-items:center;
+
+  z-index:10;
+
+}
+
+.nav-item{
+
+  text-align:center;
+
+  font-size:13px;
+
+  color:#444;
+
+}
+
+.nav-icon{
+
+  display:block;
+
+  font-size:24px;
+
+  margin-bottom:3px;
+
+}
+
+.modal{
+
+  display:none;
+
+  position:fixed;
+
+  z-index:50;
+
+  left:0;
+
+  top:0;
+
+  width:100%;
+
+  height:100%;
+
+  background:rgba(0,0,0,.55);
+
+  padding:20px;
+
+}
+
+.modal-content{
+
+  background:white;
+
+  max-width:500px;
+
+  margin:60px auto;
+
+  border-radius:22px;
+
+  padding:25px;
+
+}
+
+.close{
+
+  float:right;
+
+  font-size:30px;
+
+  cursor:pointer;
+
+}
+
+.modal h2{
+
+  margin-top:10px;
+
+}
+
+.empty{
+
+  display:none;
+
+  text-align:center;
+
+  padding:40px 20px;
+
+  color:#666;
+
+}
+
 </style>
+
 </head>
+
 <body>
+
 <header>
-<h1>🏠 Find a Roommate</h1>
-<p>Find someone you can actually live with.</p>
+
+  <h1>🏠 Find a Roommate</h1>
+
+  <p>Find someone you can actually live with.</p>
+
 </header>
 
 <div class="search">
-<input type="text" placeholder="🔎 Search by city or ZIP code">
+
+  <input id="searchBox"
+
+    type="text"
+
+    placeholder="🔎 Search by name, city, state, or interest"
+
+    oninput="searchRoommates()">
+
 </div>
 
-<div class="container">
-<div class="card">
-<div class="profile">
-<div class="avatar">👨</div>
-<div class="name">Jake, 28</div>
-<div class="location">📍 Minneapolis, MN</div>
-<div class="match">✓ 94% Match</div>
-<div class="tags">
-<span class="tag">Gaming</span><span class="tag">Movies</span>
-<span class="tag">Dogs</span><span class="tag">Non-Smoker</span>
-</div>
-<div class="details">
-💰 Budget: $700–$950/month<br>
-🏡 Looking to move: October<br>
-🌙 Night owl
-</div>
-<button onclick="alert('Profile opened!')">View Profile</button>
-</div>
+<div class="filters">
+
+  <button class="filter" onclick="quickSearch('')">✨ All</button>
+
+  <button class="filter" onclick="quickSearch('gaming')">🎮 Gaming</button>
+
+  <button class="filter" onclick="quickSearch('dogs')">🐶 Pets</button>
+
+  <button class="filter" onclick="quickSearch('non-smoker')">🚭 Non-Smoker</button>
+
+  <button class="filter" onclick="quickSearch('night owl')">🌙 Night Owl</button>
+
 </div>
 
-<div class="card">
-<div class="profile">
-<div class="avatar">👩</div>
-<div class="name">Sarah, 31</div>
-<div class="location">📍 Bloomington, MN</div>
-<div class="match">✓ 89% Match</div>
-<div class="tags">
-<span class="tag">Cooking</span><span class="tag">Music</span>
-<span class="tag">Fitness</span><span class="tag">Clean</span>
-</div>
-<div class="details">
-💰 Budget: $800–$1,100/month<br>
-🏡 Looking to move: November<br>
-☀️ Early riser
-</div>
-<button onclick="alert('Profile opened!')">View Profile</button>
-</div>
-</div>
+<div class="container" id="roommates">
+
+  <div class="card" data-search="jake minneapolis minnesota mn gaming movies dogs non-smoker night owl">
+
+    <div class="top">
+
+      <div class="avatar">👨</div>
+
+      <div>
+
+        <div class="name">Jake, 28</div>
+
+        <div class="location">📍 Minneapolis, MN</div>
+
+      </div>
+
+    </div>
+
+    <div class="match">✓ 94% Match</div>
+
+    <div class="tags">
+
+      <span class="tag">Gaming</span>
+
+      <span class="tag">Movies</span>
+
+      <span class="tag">Dogs</span>
+
+      <span class="tag">Non-Smoker</span>
+
+    </div>
+
+    <div class="details">
+
+      💰 Budget: $700–$950/month<br>
+
+      🏡 Looking to move: October<br>
+
+      🌙 Night owl
+
+    </div>
+
+    <div class="buttons">
+
+      <button class="profile-btn"
+
+        onclick="openProfile('Jake','28','Minneapolis, MN','94%','$700–$950','Gaming, movies, dogs and relaxing at home.')">
+
+        View Profile
+
+      </button>
+
+      <button class="message-btn"
+
+        onclick="messageUser('Jake')">
+
+        Message
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="card" data-search="sarah bloomington minnesota mn hiking cooking cats non-smoker early bird">
+
+    <div class="top">
+
+      <div class="avatar">👩</div>
+
+      <div>
+
+        <div class="name">Sarah, 26</div>
+
+        <div class="location">📍 Bloomington, MN</div>
+
+      </div>
+
+    </div>
+
+    <div class="match">✓ 91% Match</div>
+
+    <div class="tags">
+
+      <span class="tag">Hiking</span>
+
+      <span class="tag">Cooking</span>
+
+      <span class="tag">Cats</span>
+
+      <span class="tag">Non-Smoker</span>
+
+    </div>
+
+    <div class="details">
+
+      💰 Budget: $800–$1,100/month<br>
+
+      🏡 Looking to move: November<br>
+
+      ☀️ Early bird
+
+    </div>
+
+    <div class="buttons">
+
+      <button class="profile-btn"
+
+        onclick="openProfile('Sarah','26','Bloomington, MN','91%','$800–$1,100','Hiking, cooking, cats and exploring new places.')">
+
+        View Profile
+
+      </button>
+
+      <button class="message-btn"
+
+        onclick="messageUser('Sarah')">
+
+        Message
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="card" data-search="marcus st paul saint paul minnesota mn sports music gym clean quiet">
+
+    <div class="top">
+
+      <div class="avatar">🧔</div>
+
+      <div>
+
+        <div class="name">Marcus, 31</div>
+
+        <div class="location">📍 St. Paul, MN</div>
+
+      </div>
+
+    </div>
+
+    <div class="match">✓ 88% Match</div>
+
+    <div class="tags">
+
+      <span class="tag">Sports</span>
+
+      <span class="tag">Music</span>
+
+      <span class="tag">Gym</span>
+
+      <span class="tag">Clean</span>
+
+    </div>
+
+    <div class="details">
+
+      💰 Budget: $750–$1,000/month<br>
+
+      🏡 Looking to move: ASAP<br>
+
+      🧹 Likes a clean home
+
+    </div>
+
+    <div class="buttons">
+
+      <button class="profile-btn"
+
+        onclick="openProfile('Marcus','31','St. Paul, MN','88%','$750–$1,000','Sports, music, fitness and keeping a clean home.')">
+
+        View Profile
+
+      </button>
+
+      <button class="message-btn"
+
+        onclick="messageUser('Marcus')">
+
+        Message
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="empty" id="emptyMessage">
+
+    <h2>No roommates found</h2>
+
+    <p>Try another city, name, or interest.</p>
+
+  </div>
+
 </div>
 
-<nav>
-<div>🏠<br>Home</div>
-<div>🔍<br>Discover</div>
-<div>💬<br>Messages</div>
-<div>👤<br>Profile</div>
-</nav>
+<div class="bottom-nav">
+
+  <div class="nav-item">
+
+    <span class="nav-icon">🏠</span>
+
+    Home
+
+  </div>
+
+  <div class="nav-item">
+
+    <span class="nav-icon">🔍</span>
+
+    Discover
+
+  </div>
+
+  <div class="nav-item">
+
+    <span class="nav-icon">💬</span>
+
+    Messages
+
+  </div>
+
+  <div class="nav-item">
+
+    <span class="nav-icon">👤</span>
+
+    Profile
+
+  </div>
+
+</div>
+
+<div class="modal" id="profileModal">
+
+  <div class="modal-content">
+
+    <span class="close" onclick="closeProfile()">×</span>
+
+    <div style="font-size:55px">🏠</div>
+
+    <h2 id="modalName"></h2>
+
+    <p id="modalLocation"></p>
+
+    <div class="match" id="modalMatch"></div>
+
+    <p>
+
+      <strong>Budget:</strong>
+
+      <span id="modalBudget"></span>/month
+
+    </p>
+
+    <p>
+
+      <strong>About:</strong>
+
+      <span id="modalAbout"></span>
+
+    </p>
+
+    <button class="profile-btn"
+
+      style="width:100%;margin-top:10px"
+
+      onclick="messageFromProfile()">
+
+      💬 Send Message
+
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+let currentPerson="";
+
+function searchRoommates(){
+
+  const search =
+
+    document.getElementById("searchBox")
+
+    .value
+
+    .toLowerCase();
+
+  const cards =
+
+    document.querySelectorAll(".card");
+
+  let found=0;
+
+  cards.forEach(card=>{
+
+    const info =
+
+      card.getAttribute("data-search");
+
+    if(info.includes(search)){
+
+      card.style.display="block";
+
+      found++;
+
+    }
+
+    else{
+
+      card.style.display="none";
+
+    }
+
+  });
+
+  document.getElementById("emptyMessage")
+
+    .style.display =
+
+      found===0 ? "block" : "none";
+
+}
+
+function quickSearch(term){
+
+  document.getElementById("searchBox").value=term;
+
+  searchRoommates();
+
+}
+
+function openProfile(name,age,location,match,budget,about){
+
+  currentPerson=name;
+
+  document.getElementById("modalName")
+
+    .textContent=name+", "+age;
+
+  document.getElementById("modalLocation")
+
+    .textContent="📍 "+location;
+
+  document.getElementById("modalMatch")
+
+    .textContent="✓ "+match+" Match";
+
+  document.getElementById("modalBudget")
+
+    .textContent=budget;
+
+  document.getElementById("modalAbout")
+
+    .textContent=about;
+
+  document.getElementById("profileModal")
+
+    .style.display="block";
+
+}
+
+function closeProfile(){
+
+  document.getElementById("profileModal")
+
+    .style.display="none";
+
+}
+
+function messageUser(name){
+
+  alert(
+
+    "💬 Messaging "+name+
+
+    "\\n\\nThe full private messaging system is coming next!"
+
+  );
+
+}
+
+function messageFromProfile(){
+
+  messageUser(currentPerson);
+
+}
+
+window.onclick=function(event){
+
+  const modal =
+
+    document.getElementById("profileModal");
+
+  if(event.target===modal){
+
+    closeProfile();
+
+  }
+
+};
+
+</script>
+
 </body>
+
 </html>
