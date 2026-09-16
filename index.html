@@ -662,7 +662,7 @@ button{
 
   </div>
 
-  <div class="nav-item">
+  <div class="nav-item onclick="openMyProfile()">
 
     <span class="nav-icon">👤</span>
 
@@ -843,6 +843,26 @@ window.onclick=function(event){
   }
 
 };
+
+function openMyProfile(){
+
+  openProfile(
+
+    "My Profile",
+
+    "",
+
+    "Add your location",
+
+    "Your Profile",
+
+    "Add your budget",
+
+    "Add a little about yourself here."
+
+  );
+
+}  
 
 </script>
 
